@@ -1,17 +1,6 @@
-:root {
-    --bg-main: #0e0f12;
-    --bg-header: #121418;
-    --bg-input: #1a1d24;
-    --bg-card: #15171c;
-    --border-color: #262931;
-    --verde-primario: #22c55e;
-    --verde-secundario: #143823;
-    --texto-blanco: #ffffff;
-    --texto-gris: #9ca3af;
-    --texto-verde: #4ade80;
-    --fuente: 'Segoe UI', system-ui, sans-serif;
-}
-
+/* ==========================================================================
+    1. RESET Y BASE (Box Model - Clase 4)
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -19,23 +8,32 @@
 }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--texto-blanco);
-    font-family: var(--fuente);
+    background-color: #0e0f12;
+    color: #ffffff;
+    font-family: 'Segoe UI', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Header */
+.main-content {
+    max-width: 1300px;
+    width: 92%;
+    margin: 30px auto;
+    flex: 1;
+}
+
+/* ==========================================================================
+    2. COMPONENTES GLOBALES (Header, Footer, Botones - Flexbox - Clase 4)
+   ========================================================================== */
 .main-header {
-    background-color: var(--bg-header);
-    border-bottom: 1px solid var(--border-color);
+    background-color: #121418;
+    border-bottom: 1px solid #262931;
     padding: 12px 32px;
 }
 
 .header-container {
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -57,17 +55,16 @@ body {
 }
 
 .logo-dot {
-    width: 20px;
-    height: 20px;
-    background-color: var(--verde-primario);
+    width: 18px;
+    height: 18px;
+    background-color: #22c55e;
     border-radius: 50%;
 }
 
 .logo-text {
     font-size: 1.4rem;
     font-weight: 800;
-    color: var(--texto-blanco);
-    letter-spacing: -0.5px;
+    color: #ffffff;
 }
 
 .main-nav {
@@ -76,28 +73,31 @@ body {
 }
 
 .nav-link {
-    color: var(--texto-gris);
+    color: #9ca3af;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
 }
 
-.nav-link.active, .nav-link:hover {
-    color: var(--texto-blanco);
+/* Pseudoclases de Estado (Clase 2) */
+.nav-link.active, 
+.nav-link:hover {
+    color: #ffffff;
 }
 
 .header-search {
     flex: 1;
-    max-width: 450px;
+    max-width: 400px;
 }
 
-.header-search input {
+/* Selector de atributo (Clase 2) */
+input[type="text"] {
     width: 100%;
-    background-color: var(--bg-input);
-    border: 1px solid var(--border-color);
+    background-color: #1a1d24;
+    border: 1px solid #262931;
     border-radius: 8px;
     padding: 8px 16px;
-    color: var(--texto-blanco);
+    color: #ffffff;
     font-size: 0.9rem;
     outline: none;
 }
@@ -108,7 +108,7 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--verde-primario);
+    background-color: #66D49A;
     color: #000000;
     text-decoration: none;
     padding: 8px 18px;
@@ -118,109 +118,111 @@ body {
 }
 
 .btn-secondary {
-    background-color: var(--verde-secundario);
-    color: var(--texto-verde);
-    border: 1px solid var(--border-color);
+    background-color: #66D49A;
+    color: #000000;
+    border: 1px solid #262931;
     text-decoration: none;
     padding: 8px 18px;
     border-radius: 6px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.88rem;
 }
 
-/* Footer */
+.main-footer {
+    background-color: #0e0f12;
+    border-top: 1px solid #262931;
+    padding: 24px 32px;
+    margin-top: auto;
+}
 
 .footer-container {
-    margin-left: 20px;
-}
-
-/* Sección Explorar */
-.main-content {
-    max-width: 1400px;
-    width: 92%;
-    margin: 30px auto;
-    flex: 1;
-}
-
-.section-tag {
-    color: var(--verde-primario);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.section-title {
-    font-size: 2rem;
-    font-weight: 800;
-    margin: 6px 0;
-}
-
-.section-description {
-    color: var(--texto-gris);
-    font-size: 0.95rem;
-    margin-bottom: 25px;
-}
-
-/* Filtros */
-.filter-container {
-    margin-bottom: 30px;
-}
-
-.filter-search-box input {
-    width: 100%;
-    background-color: var(--bg-input);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 12px 16px;
-    color: var(--texto-blanco);
-    font-size: 0.95rem;
-    margin-bottom: 16px;
-    outline: none;
-}
-
-.filter-pills-row {
+    max-width: 1300px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+    3. INICIO (index.php) Y CATÁLOGO (CSS Grid - Clase 4)
+   ========================================================================== */
+.welcome-section {
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+.hero-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.hero-description {
+    color: #9ca3af;
+    font-size: 1rem;
+    margin-bottom: 35px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.feature-card {
+    background-color: #15171c;
+    border: 1px solid #262931;
+    border-radius: 12px;
+    padding: 32px;
+}
+
+.feature-icon {
+    width: 42px;
+    height: 42px;
+    background-color: #162f21;
+    color: #22c55e;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.feature-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.feature-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: 12px;
 }
 
-.pills-group {
-    display: flex;
-    gap: 8px;
+.feature-card p {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-.pill-btn {
-    background-color: var(--bg-input);
-    border: 1px solid var(--border-color);
-    color: var(--texto-gris);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
-
-.pill-btn.active {
-    background-color: var(--verde-secundario);
-    color: var(--texto-verde);
-    border-color: var(--verde-primario);
-}
-
-.sort-select {
-    background-color: var(--bg-input);
-    border: 1px solid var(--border-color);
-    color: var(--texto-gris);
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-}
-
-.results-count {
-    color: var(--texto-gris);
-    font-size: 0.8rem;
-}
-
-/* Grilla 6 Columnas */
+/* Catálogo en 6 columnas con CSS Grid */
 .albums-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -228,22 +230,19 @@ body {
 }
 
 .album-card {
-    background-color: var(--bg-card);
+    background-color: #15171c;
     border-radius: 10px;
     padding: 12px;
     border: 1px solid transparent;
-    transition: border-color 0.2s, transform 0.2s;
 }
 
 .album-card:hover {
-    border-color: var(--border-color);
-    transform: translateY(-4px);
+    border-color: #262931;
 }
 
 .cover-wrapper img {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+    height: auto;
     border-radius: 8px;
     margin-bottom: 10px;
 }
@@ -252,30 +251,579 @@ body {
     font-size: 0.95rem;
     font-weight: 700;
     margin-bottom: 2px;
+}
+
+.album-artist {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}
+
+/* ==========================================================================
+    4. DISEÑO ADAPTATIVO (Media Queries - Clase 4)
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .albums-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header-search {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .albums-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+/* ==========================================================================
+   SECCIÓN DISCOS (Catálogo Figma)
+   ========================================================================== */
+.explore-section {
+    max-width: 1300px;
+    margin: 20px auto;
+}
+
+.section-tag {
+    color: #22c55e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.section-description {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+/* Buscador de catálogo */
+.filter-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #15171c;
+    border: 1px solid #262931;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+}
+
+.filter-search-box input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    padding-left: 10px;
+}
+
+.search-icon, .clear-icon {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+/* Botones de filtros y desplegables */
+.filter-pills-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+.pills-left, .pills-right {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pill-btn {
+    background-color: #15171c;
+    border: 1px solid #262931;
+    color: #9ca3af;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.pill-btn.active {
+    border-color: #22c55e;
+    color: #4ade80;
+    background-color: #143823;
+}
+
+.pill-btn:hover {
+    border-color: #374151;
+    color: #ffffff;
+}
+
+.results-count {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+/* Grilla de 6 Columnas (Clase 4 - CSS Grid) */
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.album-card {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.album-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .album-artist {
-    color: var(--texto-gris);
+    color: #9ca3af;
     font-size: 0.8rem;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.grid-end-notice {
+    text-align: left;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin: 30px 0;
+}
+
+/* Responsivo para pantallas medianas y chicas */
+@media (max-width: 1100px) {
+    .albums-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .albums-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .filter-pills-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.filter-search-form {
+    margin-bottom: 20px;
+}
+
+.pill-btn {
+    text-decoration: none; /* Quita el subrayado de los hipervínculos */
+    display: inline-block;
+}
+
+.clear-icon {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0 8px;
+}
+
+.clear-icon:hover {
+    color: #ffffff;
+}
+
+.album-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* ==========================================================================
+    VISTA DETALLE DE DISCO (disco_detalle.php)
+   ========================================================================== */
+.album-detail-container {
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+/* Migas de pan */
+.breadcrumb {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-bottom: 30px;
+}
+
+.breadcrumb a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.breadcrumb-active {
+    color: #ffffff;
+}
+
+/* Encabezado del disco (Flexbox) */
+.album-header {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 45px;
+}
+
+.album-cover-big {
+    width: 280px;
+    min-width: 280px;
+}
+
+.album-cover-big img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.album-info-content {
+    flex: 1;
+}
+
+.album-tag {
+    color: #22c55e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.album-main-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.1;
+}
+
+.artist-link {
+    color: #22c55e;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.artist-link:hover {
+    text-decoration: underline;
+}
+
+.genre-pill {
+    display: inline-block;
+    background-color: #1a1d24;
+    border: 1px solid #262931;
+    color: #9ca3af;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    margin-bottom: 20px;
+}
+
+.album-description {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 650px;
+}
+
+/* Sección de Canciones */
+.tracklist-section {
+    margin-top: 35px;
+}
+
+.tracklist-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.tracklist-meta {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.tracklist-table {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.track-row {
+    display: flex;
+    align-items: center;
+    background-color: #15171c;
+    border: 1px solid #262931;
+    border-radius: 6px;
+    padding: 12px 20px;
+}
+
+.track-row:hover {
+    background-color: #1a1d24;
+}
+
+.track-number {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    width: 45px;
+    font-weight: 500;
+}
+
+.track-name {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    flex: 1;
+}
+
+.track-duration {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.no-tracks {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    padding: 15px 0;
+}
+
+/* Adaptación a pantallas pequeñas (Media Query) */
+@media (max-width: 768px) {
+    .album-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .album-cover-big {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .album-main-title {
+        font-size: 2rem;
+    }
+}
+/* ==========================================================================
+    VISTA DETALLE DE ARTISTA (artista_detalle.php)
+   ========================================================================== */
+.artist-detail-container {
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+.artist-header {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 45px;
+}
+
+.artist-cover-big {
+    width: 250px;
+    min-width: 250px;
+}
+
+.artist-cover-big img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.artist-info-content {
+    flex: 1;
+}
+
+.artist-tag {
+    color: #22c55e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.artist-main-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.1;
+}
+
+.artist-bio {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 650px;
+}
+
+.artist-meta-pill {
+    display: inline-block;
+    background-color: #1a1d24;
+    border: 1px solid #262931;
+    color: #9ca3af;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+}
+
+/* Subtítulo de discografía */
+.discography-section {
+    margin-bottom: 40px;
+}
+
+.section-subtitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.section-subtext {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+/* Tarjetas Destacadas Recomendadas */
+.featured-recommendations {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.recommendation-card {
+    background-color: #15171c;
+    border: 1px solid #262931;
+    border-radius: 10px;
+    padding: 24px;
+}
+
+.rec-tag {
+    color: #22c55e;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.rec-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.rec-content img {
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.rec-text {
+    flex: 1;
+}
+
+.rec-text h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
     margin-bottom: 6px;
 }
 
-.album-rating {
-    color: #facc15;
+.rec-text p {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.rec-link {
+    color: #22c55e;
+    text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
 }
 
-/* Responsivo */
-@media (max-width: 1200px) {
-    .albums-grid { grid-template-columns: repeat(4, 1fr); }
+.rec-link:hover {
+    text-decoration: underline;
 }
 
+/* Responsivo para celulares */
 @media (max-width: 768px) {
-    .albums-grid { grid-template-columns: repeat(2, 1fr); }
-    .header-container { flex-direction: column; }
-    .filter-pills-row { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .artist-header {
+        flex-direction: column;
+    }
+    .artist-cover-big {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    .featured-recommendations {
+        grid-template-columns: 1fr;
+    }
 }
