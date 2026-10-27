@@ -827,3 +827,180 @@ input[type="text"] {
         grid-template-columns: 1fr;
     }
 }
+/* ==========================================================================
+    VISTA REGISTRO (registro.php)
+   ========================================================================== */
+.register-section {
+    max-width: 440px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Portadas decorativas (Flexbox) */
+.register-covers {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.register-covers img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.register-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.register-description {
+    color: #9ca3af;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+/* Mensajes de error y de éxito (los usan registro.php y login.php) */
+.form-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-alert-error {
+    background-color: #3a2425;
+    border: 1px solid #4d2c2d;
+}
+
+.form-alert-success {
+    background-color: #1f3a2c;
+    border: 1px solid #2c4d3a;
+}
+
+/* Ícono "!" dentro de un círculo */
+.alert-icon {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 2px solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-top: 1px;
+}
+
+.alert-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.alert-detail {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}
+
+.form-alert-error .alert-icon,
+.form-alert-error .alert-title {
+    color: #f87171;
+}
+
+.form-alert-success .alert-icon,
+.form-alert-success .alert-title {
+    color: #66D49A;
+}
+
+/* Formulario */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.register-form label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Selector de atributo (Clase 2) */
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    width: 100%;
+    background-color: #0e0f12;
+    border: 1px solid #262931;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.register-form input:focus {
+    border-color: #66D49A;
+}
+
+.form-hint {
+    color: #9ca3af;
+    font-size: 0.8rem;
+    margin-top: -12px;
+    margin-bottom: 20px;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 400 !important;
+    line-height: 1.4;
+    margin-bottom: 20px !important;
+}
+
+.form-checkbox input {
+    accent-color: #66D49A;
+    margin-top: 3px;
+}
+
+.btn-submit {
+    background-color: #66D49A;
+    color: #000000;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #4ade80;
+}
+
+.register-login {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin-top: 20px;
+}
+
+.register-login a {
+    color: #66D49A;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-login a:hover {
+    text-decoration: underline;
+}

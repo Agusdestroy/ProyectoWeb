@@ -20,8 +20,8 @@ if (session_status() == PHP_SESSION_NONE) {
                     <span class="logo-text">Surco</span>
                 </a>
                 <nav class="main-nav">
-                    <a href="index.php" class="nav-link active"> inicio </a>
-                    <a href="discos.php" class="nav-link"> discos </a>
+                    <a href="index.php" class="nav-link active"> Inicio </a>
+                    <a href="discos.php" class="nav-link"> Discos </a>
                 </nav>
             </div>
             <div class="header-actions">
