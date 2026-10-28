@@ -17,9 +17,9 @@ if ($id_disco <= 0) {
 
 // 3. Consulta SQL del disco
 $query_disco = "SELECT d.id_disco, d.id_artista, d.titulo, d.portada_url, d.fecha_lanzamiento, d.descripcion, d.genero, d.sello, 
-                       YEAR(d.fecha_lanzamiento) AS anio,
-                       DATE_FORMAT(d.fecha_lanzamiento, '%d/%m/%Y') AS fecha_formateada,
-                       IFNULL(a.nombre, 'Artista Desconocido') AS artista 
+                        YEAR(d.fecha_lanzamiento) AS anio,
+                        DATE_FORMAT(d.fecha_lanzamiento, '%d/%m/%Y') AS fecha_formateada,
+                        IFNULL(a.nombre, 'Artista Desconocido') AS artista 
                 FROM discos d 
                 LEFT JOIN artistas a ON d.id_artista = a.id_artista 
                 WHERE d.id_disco = $id_disco";

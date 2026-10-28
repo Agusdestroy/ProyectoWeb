@@ -1031,3 +1031,114 @@ input[type="text"] {
 .register-login a:hover {
     text-decoration: underline;
 }
+
+/* ==========================================================================
+   CABECERA DINÁMICA DE NAVEGACIÓN (includes/header.php)
+   ========================================================================== */
+.main-header {
+    background-color: #111317;
+    border-bottom: 1px solid #1f222a;
+    padding: 12px 24px;
+}
+
+.header-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    color: #22c55e;
+}
+
+.main-nav {
+    display: flex;
+    gap: 18px;
+}
+
+.nav-link {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+/* Zona de usuario autenticado / botones */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #181b20;
+    border: 1px solid #262931;
+    padding: 4px 14px 4px 6px;
+    border-radius: 20px;
+    text-decoration: none; /* Quita el subrayado del hipervínculo */
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.user-badge:hover {
+    background-color: #20242b;
+    border-color: #374151;
+}
+
+.user-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    color: #0d0f12;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-name {
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.logout-link {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin-left: 6px;
+    padding-left: 10px;
+    border-left: 1px solid #262931;
+}
+
+.logout-link:hover {
+    color: #ef4444;
+}

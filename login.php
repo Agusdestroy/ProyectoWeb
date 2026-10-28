@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $contrasena_clean = mysqli_real_escape_string($conexion, $contrasena);
 
         $query_usuario = "SELECT id_usuario, nombre_usuario FROM usuarios
-                          WHERE email = '$email_clean' AND contrasena = '$contrasena_clean'";
+                            WHERE email = '$email_clean' AND contrasena = '$contrasena_clean'";
         $res_usuario = mysqli_query($conexion, $query_usuario);
 
         if (!$res_usuario) {
@@ -51,8 +51,8 @@ include("includes/header.php");
 
 // 5. Traer 4 portadas de discos para la decoración superior
 $query_portadas = "SELECT titulo, portada_url FROM discos
-                   WHERE portada_url IS NOT NULL
-                   ORDER BY RAND() LIMIT 4";
+                    WHERE portada_url IS NOT NULL
+                    ORDER BY RAND() LIMIT 4";
 $res_portadas = mysqli_query($conexion, $query_portadas);
 ?>
 
