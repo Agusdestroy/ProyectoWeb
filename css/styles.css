@@ -1,5 +1,5 @@
 /* ==========================================================================
-    1. RESET Y BASE (Box Model - Clase 4)
+   1. RESET Y CONFIGURACIÓN BASE
    ========================================================================== */
 * {
     margin: 0;
@@ -24,22 +24,8 @@ body {
 }
 
 /* ==========================================================================
-    2. COMPONENTES GLOBALES (Header, Footer, Botones - Flexbox - Clase 4)
+   2. COMPONENTES GLOBALES (Botones, Formularios, Alertas)
    ========================================================================== */
-/* Los estilos del header están en la sección "CABECERA DINÁMICA DE NAVEGACIÓN" al final */
-
-/* Selector de atributo (Clase 2) */
-input[type="text"] {
-    width: 100%;
-    background-color: #1a1d24;
-    border: 1px solid #262931;
-    border-radius: 8px;
-    padding: 8px 16px;
-    color: #ffffff;
-    font-size: 0.9rem;
-    outline: none;
-}
-
 .btn-primary {
     background-color: #66D49A;
     color: #000000;
@@ -48,17 +34,232 @@ input[type="text"] {
     border-radius: 6px;
     font-weight: 700;
     font-size: 0.88rem;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #4ade80;
 }
 
 .btn-secondary {
-    background-color: #66D49A;
-    color: #000000;
+    background-color: #15171c;
+    color: #ffffff;
     border: 1px solid #262931;
     text-decoration: none;
     padding: 8px 18px;
     border-radius: 6px;
     font-weight: 700;
     font-size: 0.88rem;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background-color: #262931;
+}
+
+.btn-dark {
+    background-color: #1a1d24;
+    color: #ffffff;
+    border: 1px solid #262931;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    display: inline-block;
+}
+
+.btn-dark:hover {
+    background-color: #262931;
+}
+
+/* Selector de atributo para entradas de texto */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    background-color: #15171c;
+    border: 1px solid #262931;
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #66D49A;
+}
+
+/* Mensajes de alerta */
+.form-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-alert-error {
+    background-color: #3a2425;
+    border: 1px solid #4d2c2d;
+}
+
+.form-alert-success {
+    background-color: #1f3a2c;
+    border: 1px solid #2c4d3a;
+}
+
+.alert-icon {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border: 2px solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-top: 1px;
+}
+
+.alert-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.alert-detail {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}
+
+.form-alert-error .alert-icon,
+.form-alert-error .alert-title {
+    color: #f87171;
+}
+
+.form-alert-success .alert-icon,
+.form-alert-success .alert-title {
+    color: #66D49A;
+}
+
+/* ==========================================================================
+   3. CABECERA Y PIE DE PÁGINA (Layout Flexbox)
+   ========================================================================== */
+.main-header {
+    background-color: #111317;
+    border-bottom: 1px solid #1f222a;
+    padding: 12px 24px;
+}
+
+.header-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    color: #22c55e;
+}
+
+.main-nav {
+    display: flex;
+    gap: 18px;
+}
+
+.nav-link {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #181b20;
+    border: 1px solid #262931;
+    padding: 4px 14px 4px 6px;
+    border-radius: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.user-badge:hover {
+    background-color: #20242b;
+    border-color: #374151;
+}
+
+.user-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #22c55e;
+    color: #0d0f12;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-name {
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.logout-link {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin-left: 6px;
+    padding-left: 10px;
+    border-left: 1px solid #262931;
+}
+
+.logout-link:hover {
+    color: #ef4444;
 }
 
 .main-footer {
@@ -78,38 +279,37 @@ input[type="text"] {
     font-size: 0.85rem;
 }
 
-.footer-links {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-links a {
-    color: #9ca3af;
-    text-decoration: none;
-}
-
-.footer-links a:hover {
-    color: #ffffff;
-}
-
 /* ==========================================================================
-    3. INICIO (index.php) Y CATÁLOGO (CSS Grid - Clase 4)
+   4. INICIO (index.php) Y VISTA EXPLORAR DISCOS (discos.php)
    ========================================================================== */
-.welcome-section {
-    max-width: 1100px;
+.welcome-section,
+.explore-section {
+    max-width: 1300px;
     margin: 20px auto;
 }
 
-.hero-title {
+.hero-title,
+.section-title {
     font-size: 2.2rem;
     font-weight: 800;
+    color: #ffffff;
     margin-bottom: 8px;
 }
 
-.hero-description {
+.hero-description,
+.section-description {
     color: #9ca3af;
-    font-size: 1rem;
-    margin-bottom: 35px;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.section-tag {
+    color: #22c55e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 6px;
 }
 
 .features-grid {
@@ -138,119 +338,11 @@ input[type="text"] {
     font-size: 1.2rem;
 }
 
-.feature-icon img {
-    width: 20px;
-    height: 20px;
+/* Filtros y Buscador */
+.filter-search-form {
+    margin-bottom: 20px;
 }
 
-.feature-card h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.feature-card p {
-    color: #9ca3af;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* Catálogo en 6 columnas con CSS Grid */
-.albums-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
-}
-
-.album-card {
-    background-color: #15171c;
-    border-radius: 10px;
-    padding: 12px;
-    border: 1px solid transparent;
-}
-
-.album-card:hover {
-    border-color: #262931;
-}
-
-.cover-wrapper img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.album-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 2px;
-}
-
-.album-artist {
-    color: #9ca3af;
-    font-size: 0.8rem;
-}
-
-/* ==========================================================================
-    4. DISEÑO ADAPTATIVO (Media Queries - Clase 4)
-   ========================================================================== */
-@media (max-width: 1200px) {
-    .albums-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .albums-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-container {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-}
-/* ==========================================================================
-   SECCIÓN DISCOS (Catálogo Figma)
-   ========================================================================== */
-.explore-section {
-    max-width: 1300px;
-    margin: 20px auto;
-}
-
-.section-tag {
-    color: #22c55e;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    display: block;
-    margin-bottom: 6px;
-}
-
-.section-title {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 6px;
-}
-
-.section-description {
-    color: #9ca3af;
-    font-size: 0.95rem;
-    margin-bottom: 25px;
-}
-
-/* Buscador de catálogo */
 .filter-search-box {
     position: relative;
     display: flex;
@@ -263,12 +355,8 @@ input[type="text"] {
 }
 
 .filter-search-box input {
-    width: 100%;
     background: transparent;
     border: none;
-    color: #ffffff;
-    font-size: 0.9rem;
-    outline: none;
     padding-left: 10px;
 }
 
@@ -277,7 +365,15 @@ input[type="text"] {
     font-size: 0.85rem;
 }
 
-/* Botones de filtros y desplegables */
+.clear-icon {
+    text-decoration: none;
+    padding: 0 8px;
+}
+
+.clear-icon:hover {
+    color: #ffffff;
+}
+
 .filter-pills-row {
     display: flex;
     justify-content: space-between;
@@ -300,7 +396,8 @@ input[type="text"] {
     border-radius: 6px;
     font-size: 0.82rem;
     font-weight: 500;
-    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .pill-btn.active {
@@ -320,12 +417,22 @@ input[type="text"] {
     margin-bottom: 20px;
 }
 
-/* Grilla de 6 Columnas (Clase 4 - CSS Grid) */
+/* Grilla de Discos (CSS Grid - 6 Columnas) */
 .albums-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 24px;
     margin-bottom: 40px;
+}
+
+.album-card-wrapper {
+    position: relative;
+}
+
+.album-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .album-card {
@@ -361,59 +468,6 @@ input[type="text"] {
     text-overflow: ellipsis;
 }
 
-.grid-end-notice {
-    text-align: left;
-    color: #9ca3af;
-    font-size: 0.85rem;
-    margin: 30px 0;
-}
-
-/* Responsivo para pantallas medianas y chicas */
-@media (max-width: 1100px) {
-    .albums-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .albums-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .filter-pills-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-.filter-search-form {
-    margin-bottom: 20px;
-}
-
-.pill-btn {
-    text-decoration: none; /* Quita el subrayado de los hipervínculos */
-    display: inline-block;
-}
-
-.clear-icon {
-    color: #9ca3af;
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 0 8px;
-}
-
-.clear-icon:hover {
-    color: #ffffff;
-}
-
-.album-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.album-card-wrapper {
-    position: relative;
-}
-
 .fav-form {
     position: absolute;
     top: 8px;
@@ -437,15 +491,22 @@ input[type="text"] {
     border-color: #22c55e;
 }
 
+.grid-end-notice {
+    text-align: left;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    margin: 30px 0;
+}
+
 /* ==========================================================================
-    VISTA DETALLE DE DISCO (disco_detalle.php)
+   5. DETALLE DE DISCO Y ARTISTA (disco_detalle.php / artista_detalle.php)
    ========================================================================== */
-.album-detail-container {
+.album-detail-container,
+.artist-detail-container {
     max-width: 1100px;
     margin: 20px auto;
 }
 
-/* Migas de pan */
 .breadcrumb {
     font-size: 0.85rem;
     color: #9ca3af;
@@ -465,40 +526,40 @@ input[type="text"] {
     color: #ffffff;
 }
 
-/* Encabezado del disco (Flexbox) */
-.album-header {
+.album-header,
+.artist-header {
     display: flex;
     gap: 40px;
     align-items: flex-start;
     margin-bottom: 45px;
 }
 
-.album-cover-big {
+.album-cover-big,
+.artist-cover-big {
     width: 280px;
     min-width: 280px;
 }
 
-.album-cover-big img {
+.album-cover-big img,
+.artist-cover-big img {
     width: 100%;
     height: auto;
     border-radius: 8px;
     display: block;
 }
 
-.album-info-content {
+.artist-cover-big img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.album-info-content,
+.artist-info-content {
     flex: 1;
 }
 
-.album-tag {
-    color: #22c55e;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.album-main-title {
+.album-main-title,
+.artist-main-title {
     font-size: 2.6rem;
     font-weight: 800;
     color: #ffffff;
@@ -519,7 +580,8 @@ input[type="text"] {
     text-decoration: underline;
 }
 
-.genre-pill {
+.genre-pill,
+.artist-meta-pill {
     display: inline-block;
     background-color: #1a1d24;
     border: 1px solid #262931;
@@ -530,26 +592,29 @@ input[type="text"] {
     margin-bottom: 20px;
 }
 
-.album-description {
+.album-description,
+.artist-bio {
     color: #9ca3af;
     font-size: 0.95rem;
     line-height: 1.6;
     max-width: 650px;
 }
 
-/* Sección de Canciones */
-.tracklist-section {
+.tracklist-section,
+.discography-section {
     margin-top: 35px;
 }
 
-.tracklist-title {
+.tracklist-title,
+.section-subtitle {
     font-size: 1.4rem;
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 4px;
 }
 
-.tracklist-meta {
+.tracklist-meta,
+.section-subtext {
     color: #9ca3af;
     font-size: 0.85rem;
     margin-bottom: 20px;
@@ -593,121 +658,12 @@ input[type="text"] {
     font-size: 0.85rem;
 }
 
-.no-tracks {
-    color: #9ca3af;
-    font-size: 0.9rem;
-    padding: 15px 0;
-}
-
-/* Adaptación a pantallas pequeñas (Media Query) */
-@media (max-width: 768px) {
-    .album-header {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .album-cover-big {
-        width: 100%;
-        max-width: 260px;
-        margin: 0 auto;
-    }
-
-    .album-main-title {
-        font-size: 2rem;
-    }
-}
-/* ==========================================================================
-    VISTA DETALLE DE ARTISTA (artista_detalle.php)
-   ========================================================================== */
-.artist-detail-container {
-    max-width: 1100px;
-    margin: 20px auto;
-}
-
-.artist-header {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    margin-bottom: 45px;
-}
-
-.artist-cover-big {
-    width: 250px;
-    min-width: 250px;
-}
-
-.artist-cover-big img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    display: block;
-}
-
-.artist-info-content {
-    flex: 1;
-}
-
-.artist-tag {
-    color: #22c55e;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.artist-main-title {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 12px;
-    line-height: 1.1;
-}
-
-.artist-bio {
-    color: #9ca3af;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    max-width: 650px;
-}
-
-.artist-meta-pill {
-    display: inline-block;
-    background-color: #1a1d24;
-    border: 1px solid #262931;
-    color: #9ca3af;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.82rem;
-}
-
-/* Subtítulo de discografía */
-.discography-section {
-    margin-bottom: 40px;
-}
-
-.section-subtitle {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 4px;
-}
-
-.section-subtext {
-    color: #9ca3af;
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-}
-
-/* Tarjetas Destacadas Recomendadas */
+/* Recomendaciones en detalle de artista */
 .featured-recommendations {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin: 20px 0 40px 0;
 }
 
 .recommendation-card {
@@ -768,22 +724,8 @@ input[type="text"] {
     text-decoration: underline;
 }
 
-/* Responsivo para celulares */
-@media (max-width: 768px) {
-    .artist-header {
-        flex-direction: column;
-    }
-    .artist-cover-big {
-        width: 100%;
-        max-width: 250px;
-        margin: 0 auto;
-    }
-    .featured-recommendations {
-        grid-template-columns: 1fr;
-    }
-}
 /* ==========================================================================
-    VISTA REGISTRO Y LOGIN (registro.php y login.php comparten estas clases)
+   6. AUTENTICACIÓN (login.php / registro.php)
    ========================================================================== */
 .register-section {
     max-width: 440px;
@@ -791,7 +733,6 @@ input[type="text"] {
     text-align: center;
 }
 
-/* Portadas decorativas (Flexbox) */
 .register-covers {
     display: flex;
     justify-content: center;
@@ -819,64 +760,6 @@ input[type="text"] {
     margin-bottom: 28px;
 }
 
-/* Mensajes de error y de éxito (los usan registro.php y login.php) */
-.form-alert {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    border-radius: 8px;
-    padding: 14px 16px;
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.form-alert-error {
-    background-color: #3a2425;
-    border: 1px solid #4d2c2d;
-}
-
-.form-alert-success {
-    background-color: #1f3a2c;
-    border: 1px solid #2c4d3a;
-}
-
-/* Ícono "!" dentro de un círculo */
-.alert-icon {
-    width: 18px;
-    height: 18px;
-    min-width: 18px;
-    border: 2px solid;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 800;
-    margin-top: 1px;
-}
-
-.alert-title {
-    font-size: 0.88rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-}
-
-.alert-detail {
-    color: #9ca3af;
-    font-size: 0.8rem;
-}
-
-.form-alert-error .alert-icon,
-.form-alert-error .alert-title {
-    color: #f87171;
-}
-
-.form-alert-success .alert-icon,
-.form-alert-success .alert-title {
-    color: #66D49A;
-}
-
-/* Formulario */
 .register-form {
     display: flex;
     flex-direction: column;
@@ -889,23 +772,10 @@ input[type="text"] {
     margin-bottom: 8px;
 }
 
-/* Selector de atributo (Clase 2) */
 .register-form input[type="text"],
 .register-form input[type="email"],
 .register-form input[type="password"] {
-    width: 100%;
-    background-color: #0e0f12;
-    border: 1px solid #262931;
-    border-radius: 8px;
-    padding: 12px 16px;
-    color: #ffffff;
-    font-size: 0.95rem;
-    outline: none;
     margin-bottom: 20px;
-}
-
-.register-form input:focus {
-    border-color: #66D49A;
 }
 
 .form-hint {
@@ -915,21 +785,6 @@ input[type="text"] {
     margin-bottom: 20px;
 }
 
-.register-form .form-checkbox {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-weight: 400;
-    line-height: 1.4;
-    margin-bottom: 20px;
-}
-
-/* Contraseña con error (borde rojo) */
-.register-form input.input-error {
-    border-color: #f87171;
-}
-
-/* Fila "Recordarme" + "¿Olvidaste tu contraseña?" (login.php) */
 .form-options {
     display: flex;
     justify-content: space-between;
@@ -937,8 +792,15 @@ input[type="text"] {
     margin-bottom: 20px;
 }
 
-.register-form .form-options .form-checkbox {
-    margin-bottom: 0;
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+}
+
+.form-checkbox input {
+    accent-color: #66D49A;
 }
 
 .forgot-link {
@@ -949,26 +811,6 @@ input[type="text"] {
 
 .forgot-link:hover {
     text-decoration: underline;
-}
-
-.form-checkbox input {
-    accent-color: #66D49A;
-    margin-top: 3px;
-}
-
-.btn-submit {
-    background-color: #66D49A;
-    color: #000000;
-    border: none;
-    border-radius: 6px;
-    padding: 12px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-}
-
-.btn-submit:hover {
-    background-color: #4ade80;
 }
 
 .register-login {
@@ -983,129 +825,14 @@ input[type="text"] {
     font-weight: 600;
 }
 
-.register-login a:hover {
-    text-decoration: underline;
-}
-
 /* ==========================================================================
-    CABECERA DINÁMICA DE NAVEGACIÓN (includes/header.php)
-   ========================================================================== */
-.main-header {
-    background-color: #111317;
-    border-bottom: 1px solid #1f222a;
-    padding: 12px 24px;
-}
-
-.header-container {
-    max-width: 1300px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.logo {
-    color: #ffffff;
-    font-size: 1.3rem;
-    font-weight: 800;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.logo-icon {
-    color: #22c55e;
-}
-
-.main-nav {
-    display: flex;
-    gap: 18px;
-}
-
-.nav-link {
-    color: #9ca3af;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.nav-link:hover {
-    color: #ffffff;
-}
-
-/* Zona de usuario autenticado / botones */
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.user-badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #181b20;
-    border: 1px solid #262931;
-    padding: 4px 14px 4px 6px;
-    border-radius: 20px;
-    text-decoration: none; /* Quita el subrayado del hipervínculo */
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.user-badge:hover {
-    background-color: #20242b;
-    border-color: #374151;
-}
-
-.user-avatar {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background-color: #22c55e;
-    color: #0d0f12;
-    font-weight: 700;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.user-name {
-    color: #ffffff;
-    font-size: 0.88rem;
-    font-weight: 600;
-}
-
-.logout-link {
-    color: #9ca3af;
-    text-decoration: none;
-    font-size: 0.8rem;
-    margin-left: 6px;
-    padding-left: 10px;
-    border-left: 1px solid #262931;
-}
-
-.logout-link:hover {
-    color: #ef4444;
-}
-/* ==========================================================================
-    VISTA PERFIL (perfil.php)
+   7. PERFIL Y COLECCIÓN (perfil.php / mi_coleccion.php)
    ========================================================================== */
 .profile-container {
     max-width: 1100px;
     margin: 20px auto;
 }
 
-/* Encabezado: avatar + datos + botón (Flexbox) */
 .profile-header {
     display: flex;
     align-items: center;
@@ -1150,23 +877,6 @@ input[type="text"] {
     max-width: 650px;
 }
 
-/* Botón oscuro (Editar perfil / Cancelar) */
-.btn-dark {
-    background-color: #1a1d24;
-    color: #ffffff;
-    border: 1px solid #262931;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.88rem;
-}
-
-.btn-dark:hover {
-    background-color: #262931;
-}
-
-/* Contadores de favoritos y listas */
 .profile-stats {
     display: flex;
     gap: 40px;
@@ -1184,37 +894,17 @@ input[type="text"] {
     margin-right: 8px;
 }
 
-/* Bloques de favoritos y listas */
 .profile-block {
     margin-bottom: 40px;
 }
 
-.profile-block-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 20px;
-    margin-bottom: 4px;
-}
-
-.profile-empty {
-    color: #9ca3af;
-    font-size: 0.9rem;
-}
-
-.profile-empty a {
-    color: #66D49A;
-    text-decoration: none;
-}
-
-/* Favoritos en 4 columnas (CSS Grid) */
 .profile-favorites {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
-/* Listas en 3 columnas (CSS Grid) */
+/* Tarjetas de Listas */
 .profile-lists {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1225,25 +915,31 @@ input[type="text"] {
     background-color: #15171c;
     border: 1px solid #262931;
     border-radius: 10px;
-    padding: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .list-covers {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     margin-bottom: 14px;
+    width: 100%;
 }
 
 .list-covers img {
-    width: 33%;
-    aspect-ratio: 1 / 1;
+    width: 33.33%;
+    height: 90px;
     object-fit: cover;
     border-radius: 4px;
+    display: block;
 }
 
 .list-title {
     font-size: 1rem;
     font-weight: 700;
+    color: #ffffff;
     margin-bottom: 6px;
 }
 
@@ -1259,14 +955,72 @@ input[type="text"] {
 }
 
 /* ==========================================================================
-    VISTA EDITAR PERFIL (editar_perfil.php)
+   8. CREAR Y VER LISTA DETALLE (crear_lista.php / lista_detalle.php)
+   ========================================================================== */
+.list-container-narrow {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.list-panel {
+    background-color: #181b20;
+    border: 1px solid #262931;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.list-panel-title {
+    color: #ffffff;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.list-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #111317;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.list-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.list-item-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.list-detail-layout {
+    display: flex;
+    gap: 40px;
+}
+
+.list-detail-main {
+    flex: 1;
+}
+
+.list-detail-sidebar {
+    width: 280px;
+}
+
+/* ==========================================================================
+   9. EDITAR PERFIL (editar_perfil.php)
    ========================================================================== */
 .edit-profile-container {
     max-width: 1100px;
     margin: 20px auto;
 }
 
-/* Formulario a la izquierda y tarjetas a la derecha (CSS Grid) */
 .edit-profile-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -1294,33 +1048,11 @@ input[type="text"] {
     font-size: 1.5rem;
 }
 
-.register-form textarea {
-    width: 100%;
-    background-color: #0e0f12;
-    border: 1px solid #262931;
-    border-radius: 8px;
-    padding: 12px 16px;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 0.95rem;
-    outline: none;
-    resize: vertical;
-    margin-bottom: 20px;
-}
-
-.register-form textarea:focus {
-    border-color: #66D49A;
-}
-
 .edit-actions {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 10px;
-}
-
-.edit-actions .btn-submit {
-    padding: 10px 18px;
 }
 
 .edit-sidebar {
@@ -1349,19 +1081,62 @@ input[type="text"] {
     margin-bottom: 8px;
 }
 
-/* Responsivo para perfil y editar perfil */
+/* ==========================================================================
+    10. MEDIA QUERIES (Diseño Adaptativo)
+   ========================================================================== */
+@media (max-width: 1200px) {
+    .albums-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
-    .profile-header {
+    .header-container {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 15px;
     }
 
+    .features-grid,
+    .featured-recommendations,
+    .list-detail-layout,
+    .edit-profile-layout,
+    .profile-lists {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+
+    .list-detail-sidebar {
+        width: 100%;
+    }
+
+    .albums-grid,
     .profile-favorites {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .profile-lists,
-    .edit-profile-layout {
-        grid-template-columns: 1fr;
+    .album-header,
+    .artist-header,
+    .profile-header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .album-cover-big,
+    .artist-cover-big {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .filter-pills-row {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

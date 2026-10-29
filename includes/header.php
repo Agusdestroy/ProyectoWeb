@@ -1,25 +1,24 @@
 <?php
-// 1. Iniciar la sesión si aún no está activa
+// 1. Iniciar sesión únicamente si no existe una sesión previa
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// 2. Verificar estado de autenticación
+// 2. Control de estado de autenticación de usuario
 $esta_logueado  = isset($_SESSION['id_usuario']);
 $nombre_usuario = '';
 $inicial        = '';
 
 if ($esta_logueado) {
-    // Captura el nombre guardado en sesión por login.php (soporta 'nombre' o 'usuario')
-    if (isset($_SESSION['nombre']) && !empty($_SESSION['nombre'])) {
-        $nombre_usuario = $_SESSION['nombre'];
-    } elseif (isset($_SESSION['usuario'])) {
+    if (isset($_SESSION['usuario']) && !empty($_SESSION['usuario'])) {
         $nombre_usuario = $_SESSION['usuario'];
+    } elseif (isset($_SESSION['nombre'])) {
+        $nombre_usuario = $_SESSION['nombre'];
     } else {
         $nombre_usuario = 'Usuario';
     }
     
-    // Extrae la primera letra para el círculo de avatar
+    // Obtener la letra inicial en mayúscula para la foto de avatar
     $inicial = strtoupper(substr($nombre_usuario, 0, 1));
 }
 ?>
@@ -34,7 +33,7 @@ if ($esta_logueado) {
 <body>
     <header class="main-header">
         <div class="header-container">
-            <!-- Menú Izquierdo: Logo y Navegación Principal -->
+            <!-- Sección Izquierda: Logo y Navegación Principal -->
             <div class="header-left">
                 <a href="index.php" class="logo">
                     <span class="logo-icon">◎</span> surco
@@ -48,10 +47,10 @@ if ($esta_logueado) {
                     <?php endif; ?>
                 </nav>
             </div>
-            <!-- Menú Derecho: Estado de Sesión -->
+
+            <!-- Sección Derecha: Opciones de Sesión -->
             <div class="header-right">
                 <?php if ($esta_logueado): ?>
-                    <!-- Enlace al perfil de usuario -->
                     <a href="perfil.php" class="user-badge" title="Ir a mi perfil">
                         <span class="user-avatar"><?php echo htmlspecialchars($inicial); ?></span>
                         <span class="user-name"><?php echo htmlspecialchars($nombre_usuario); ?></span>
@@ -61,7 +60,7 @@ if ($esta_logueado) {
                     <a href="login.php" class="btn-secondary">Iniciar Sesión</a>
                     <a href="registro.php" class="btn-primary">Crear Cuenta</a>
                 <?php endif; ?>
-            </div>
+                </div>
         </div>
     </header>
     <main class="site-main">
