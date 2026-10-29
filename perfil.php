@@ -17,7 +17,7 @@ $perfil_guardado = isset($_GET['guardado']);
 
 // Nombres de los meses para mostrar "En Surco desde marzo de 2025"
 $meses = array(1 => 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
-               'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+                'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
 
 // 2. Datos del usuario
 $query_usuario = "SELECT nombre_usuario, biografia, MONTH(fecha_registro) AS mes, YEAR(fecha_registro) AS anio
@@ -43,7 +43,7 @@ $total_listas     = $fila_listas['total'];
 
 // 4. Los 4 favoritos más recientes
 $query_favoritos = "SELECT d.id_disco, d.titulo, d.portada_url, YEAR(d.fecha_lanzamiento) AS anio,
-                           a.nombre AS artista
+                            a.nombre AS artista
                     FROM favoritos f
                     JOIN discos d ON f.id_disco = d.id_disco
                     JOIN artistas a ON d.id_artista = a.id_artista
@@ -58,12 +58,12 @@ if (!$res_favoritos) {
 
 // 5. Las 3 listas más recientes, con la cantidad de discos de cada una
 $query_listas = "SELECT l.id_lista, l.titulo, l.descripcion, COUNT(ld.id_disco) AS total_discos
-                 FROM listas l
-                 LEFT JOIN lista_discos ld ON l.id_lista = ld.id_lista
-                 WHERE l.id_usuario = $id_usuario
-                 GROUP BY l.id_lista
-                 ORDER BY l.fecha_creacion DESC
-                 LIMIT 3";
+                    FROM listas l
+                    LEFT JOIN lista_discos ld ON l.id_lista = ld.id_lista
+                    WHERE l.id_usuario = $id_usuario
+                    GROUP BY l.id_lista
+                    ORDER BY l.fecha_creacion DESC
+                    LIMIT 3";
 $res_listas = mysqli_query($conexion, $query_listas);
 
 if (!$res_listas) {
@@ -121,7 +121,10 @@ if (!$res_listas) {
                 <h2 class="section-subtitle">Mis favoritos destacados</h2>
                 <p class="section-subtext">Los últimos discos que agregaste. Una selección de tus <?php echo $total_favoritos; ?> favoritos.</p>
             </div>
-            <a href="coleccion.php" class="rec-link">Ver los <?php echo $total_favoritos; ?> favoritos →</a>
+            <!-- Cambiamos coleccion.php por mi_coleccion.php -->
+            <a href="mi_coleccion.php" class="rec-link">
+                Ver los <?php echo $total_favoritos; ?> favoritos →
+            </a>
         </div>
 
         <?php if (mysqli_num_rows($res_favoritos) > 0): ?>
@@ -134,9 +137,6 @@ if (!$res_listas) {
                             </div>
                             <p class="album-title"><?php echo htmlspecialchars($disco['titulo']); ?></p>
                             <p class="album-artist"><?php echo htmlspecialchars($disco['artista']) . ' · ' . $disco['anio']; ?></p>
-
-                            <!-- Estrellas: solo maqueta, todavía sin funcionalidad -->
-                            <p class="album-rating">★★★★ <span>4,5</span></p>
                         </div>
                     </a>
                 <?php endwhile; ?>
@@ -153,7 +153,7 @@ if (!$res_listas) {
                 <h2 class="section-subtitle">Mis listas</h2>
                 <p class="section-subtext">Las listas que armaste en Surco.</p>
             </div>
-            <a href="listas.php" class="rec-link">Gestionar listas →</a>
+            <a href="mi_coleccion.php?vista=listas" class="rec-link">Gestionar listas →</a>
         </div>
 
         <?php if (mysqli_num_rows($res_listas) > 0): ?>
@@ -163,10 +163,10 @@ if (!$res_listas) {
                     // Traer hasta 3 portadas de los discos de esta lista
                     $id_lista = $lista['id_lista'];
                     $query_portadas = "SELECT d.titulo, d.portada_url
-                                       FROM lista_discos ld
-                                       JOIN discos d ON ld.id_disco = d.id_disco
-                                       WHERE ld.id_lista = $id_lista
-                                       LIMIT 3";
+                                        FROM lista_discos ld
+                                        JOIN discos d ON ld.id_disco = d.id_disco
+                                        WHERE ld.id_lista = $id_lista
+                                        LIMIT 3";
                     $res_portadas = mysqli_query($conexion, $query_portadas);
                     ?>
                     <div class="list-card">

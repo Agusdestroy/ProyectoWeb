@@ -410,6 +410,33 @@ input[type="text"] {
     display: block;
 }
 
+.album-card-wrapper {
+    position: relative;
+}
+
+.fav-form {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 5;
+}
+
+.btn-fav {
+    background-color: #15171c;
+    border: 1px solid #262931;
+    color: #9ca3af;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.btn-fav.active {
+    color: #22c55e;
+    border-color: #22c55e;
+}
+
 /* ==========================================================================
     VISTA DETALLE DE DISCO (disco_detalle.php)
    ========================================================================== */
@@ -961,7 +988,7 @@ input[type="text"] {
 }
 
 /* ==========================================================================
-   CABECERA DINÁMICA DE NAVEGACIÓN (includes/header.php)
+    CABECERA DINÁMICA DE NAVEGACIÓN (includes/header.php)
    ========================================================================== */
 .main-header {
     background-color: #111317;
@@ -1185,16 +1212,6 @@ input[type="text"] {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-}
-
-.album-rating {
-    color: #66D49A;
-    font-size: 0.8rem;
-}
-
-.album-rating span {
-    color: #9ca3af;
-    margin-left: 4px;
 }
 
 /* Listas en 3 columnas (CSS Grid) */

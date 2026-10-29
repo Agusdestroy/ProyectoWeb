@@ -1,18 +1,24 @@
 <?php
-// 1. Conexión a la base de datos y cabecera
+// 1. Conexión a la base de datos e inclusión de cabecera
 require("bd/conexion_bd.php");
 include("includes/header.php");
 
-// 2. Capturar y sanitizar parámetros de la URL ($_GET)
+// 2. Capturar usuario en sesión (0 si no está logueado)
+$id_usuario = isset($_SESSION['id_usuario']) ? (int)$_SESSION['id_usuario'] : 0;
+
+// 3. Capturar y sanitizar parámetros de la URL ($_GET)
 $buscar = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
 $orden  = isset($_GET['orden'])  ? $_GET['orden']  : 'novedades';
 
-// 3. Construcción dinámica de la consulta SQL
-$query = "SELECT d.id_disco, d.titulo, d.portada_url, YEAR(d.fecha_lanzamiento) AS anio, IFNULL(a.nombre, 'Artista Desconocido') AS artista 
+// 4. Consulta SQL con LEFT JOIN a la tabla 'favoritos'
+$query = "SELECT d.id_disco, d.titulo, d.portada_url, YEAR(d.fecha_lanzamiento) AS anio, 
+                    IFNULL(a.nombre, 'Artista Desconocido') AS artista,
+                    IF(f.id_disco IS NOT NULL, 1, 0) AS es_favorito
             FROM discos d 
-            LEFT JOIN artistas a ON d.id_artista = a.id_artista";
+            LEFT JOIN artistas a ON d.id_artista = a.id_artista
+            LEFT JOIN favoritos f ON d.id_disco = f.id_disco AND f.id_usuario = $id_usuario";
 
-// Filtro Búsqueda (WHERE)
+// Filtro de Búsqueda (WHERE)
 if (!empty($buscar)) {
     $buscar_clean = mysqli_real_escape_string($conexion, $buscar);
     $query .= " WHERE d.titulo LIKE '%$buscar_clean%' OR a.nombre LIKE '%$buscar_clean%'";
@@ -27,9 +33,14 @@ if ($orden === 'antiguos') {
     $query .= " ORDER BY d.fecha_lanzamiento DESC";
 }
 
-// 4. Ejecutar la consulta en MariaDB
+// 5. Ejecutar consulta
 $resultado = mysqli_query($conexion, $query);
-$total_discos = $resultado ? mysqli_num_rows($resultado) : 0;
+
+if (!$resultado) {
+    die("Error en la consulta SQL: " . mysqli_error($conexion));
+}
+
+$total_discos = mysqli_num_rows($resultado);
 ?>
 
 <section class="explore-section">
@@ -78,19 +89,32 @@ $total_discos = $resultado ? mysqli_num_rows($resultado) : 0;
 
     <!-- Grilla de Discos -->
     <div class="albums-grid">
-        <?php if ($resultado && $total_discos > 0): ?>
+        <?php if ($total_discos > 0): ?>
             <?php while ($disco = mysqli_fetch_assoc($resultado)): ?>
-                <a href="disco_detalle.php?id=<?php echo $disco['id_disco']; ?>" class="album-card-link">
-                    <div class="album-card">
-                        <div class="cover-wrapper">
-                            <img src="<?php echo htmlspecialchars($disco['portada_url']); ?>" alt="<?php echo htmlspecialchars($disco['titulo']); ?>">
+                <div class="album-card-wrapper">
+                    <!-- Enlace a la vista detalle del disco -->
+                    <a href="disco_detalle.php?id=<?php echo $disco['id_disco']; ?>" class="album-card-link">
+                        <div class="album-card">
+                            <div class="cover-wrapper">
+                                <img src="<?php echo htmlspecialchars($disco['portada_url']); ?>" alt="<?php echo htmlspecialchars($disco['titulo']); ?>">
+                            </div>
+                            <h3 class="album-title"><?php echo htmlspecialchars($disco['titulo']); ?></h3>
+                            <p class="album-artist">
+                                <?php echo htmlspecialchars($disco['artista']); ?> · <?php echo htmlspecialchars($disco['anio']); ?>
+                            </p>
                         </div>
-                        <h3 class="album-title"><?php echo htmlspecialchars($disco['titulo']); ?></h3>
-                        <p class="album-artist">
-                            <?php echo htmlspecialchars($disco['artista']); ?> · <?php echo htmlspecialchars($disco['anio']); ?>
-                        </p>
-                    </div>
-                </a>
+                    </a>
+
+                    <!-- Botón de Favorito (Solo para usuarios con sesión activa) -->
+                    <?php if (isset($_SESSION['id_usuario'])): ?>
+                        <form action="favorito_toggle.php" method="POST" class="fav-form">
+                            <input type="hidden" name="id_disco" value="<?php echo $disco['id_disco']; ?>">
+                            <button type="submit" class="btn-fav <?php echo ($disco['es_favorito'] == 1) ? 'active' : ''; ?>" title="<?php echo ($disco['es_favorito'] == 1) ? 'Quitar de favoritos' : 'Agregar a favoritos'; ?>">
+                                <?php echo ($disco['es_favorito'] == 1) ? '♥' : '♡'; ?>
+                            </button>
+                        </form>
+                    <?php endif; ?>
+                </div>
             <?php endwhile; ?>
         <?php else: ?>
             <p style="grid-column: 1 / -1; color: #9ca3af; padding: 20px 0;">
@@ -103,6 +127,7 @@ $total_discos = $resultado ? mysqli_num_rows($resultado) : 0;
 </section>
 
 <?php
+// 6. Cierre de conexión y pie de página
 mysqli_close($conexion);
 include("includes/footer.php");
 ?>

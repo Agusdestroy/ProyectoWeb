@@ -44,8 +44,7 @@ if ($esta_logueado) {
                     <a href="discos.php" class="nav-link">Discos</a>
                     
                     <?php if ($esta_logueado): ?>
-                        <a href="listas.php" class="nav-link">Listas</a>
-                        <a href="coleccion.php" class="nav-link">Mi colección</a>
+                        <a href="mi_coleccion.php" class="nav-link">Mi Colección</a>
                     <?php endif; ?>
                 </nav>
             </div>
