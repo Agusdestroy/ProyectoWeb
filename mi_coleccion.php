@@ -153,9 +153,6 @@ include("includes/header.php");
                                 <p class="album-artist">
                                     <?php echo htmlspecialchars($disco['artista']); ?> · <?php echo htmlspecialchars($disco['anio']); ?>
                                 </p>
-                                <p class="album-rating" style="font-size: 0.75rem; color: #22c55e; margin-top: 4px;">
-                                    ★★★★ <span style="color: #9ca3af;">4,5</span>
-                                </p>
                             </div>
                         </a>
 
