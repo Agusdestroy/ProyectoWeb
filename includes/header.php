@@ -36,7 +36,7 @@ if ($esta_logueado) {
             <!-- Sección Izquierda: Logo y Navegación Principal -->
             <div class="header-left">
                 <a href="index.php" class="logo">
-                    <span class="logo-icon">◎</span> surco
+                    <span class="logo-icon">◎</span> Surco
                 </a>
                 <nav class="main-nav">
                     <a href="index.php" class="nav-link">Inicio</a>
